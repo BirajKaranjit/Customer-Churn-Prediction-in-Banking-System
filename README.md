@@ -1,92 +1,59 @@
 # Customer Churn Prediction in Banking-System-Data_Science
-Customer Churn Prediction
-This repository presents a machine learning-based solution for predicting bank customer churn. The primary objective is to identify customers who are likely to leave the bank (churn), enabling proactive retention strategies. The workflow includes comprehensive Exploratory Data Analysis (EDA), data preprocessing, model training using multiple machine learning algorithms, and rigorous model evaluation.
 
-Workflow Summary:
-Conducted detailed EDA to understand feature distributions and correlations.
+This repository presents a machine learning solution for predicting **bank customer churn**. The objective is to accurately identify customers who are likely to discontinue banking services, enabling the institution to implement targeted retention strategies.
 
-Performed data cleaning, encoding of categorical variables (via one-hot encoding), and outlier detection.
+## Project Workflow
 
-Trained and evaluated multiple models including:
+- Conducted **exploratory data analysis (EDA)** to understand trends, detect outliers, and identify important features.
+  ![correlation_heatmap](https://github.com/user-attachments/assets/751573bc-f804-41e8-bc64-87f22ae076a1)
 
-Logistic Regression
+- Performed **data preprocessing**:
+  - Handled missing values and outliers using **interquantile range (IQR)** filtering.
+  - Applied **one-hot encoding** to convert categorical variables (e.g., *gender*, *country*) into numerical format.
+- Evaluated a range of **classification algorithms**:
+  - *Logistic Regression*
+  - *K-Nearest Neighbors (KNN)*
+  - *Decision Tree Classifier*
+  - *Random Forest Classifier*
+  - *Gradient Boosting Classifier*
+  - *Support Vector Machine (SVM)*
+  - *Light Gradient Boosting Machine (LightGBMClassifier)*
 
-K-Nearest Neighbors (KNN)
+- Used **10-fold cross-validation** to compare model performances.
+- Tuned hyperparameters with `GridSearchCV`, including:
+  - *Number of Estimators*
+  - *Learning Rate*
+  - *Maximum Tree Depth*
 
-Decision Tree Classifier
+## 🏆 Best Model: **LightGBMClassifier**
 
-Random Forest Classifier
+The best performing model was the **Light Gradient Boosting Machine (LightGBMClassifier)**, tuned using grid search with the following hyperparameters:
 
-Gradient Boosting Classifier
+- **Learning Rate:** `0.05`  
+- **Max Depth:** `5`  
+- **Number of Estimators:** `100`
 
-Support Vector Machine
+### 🔢 Evaluation Metrics:
 
-Light Gradient Boosting Machine (LightGBM)
+- **Accuracy:** `0.8675`  
+- **Precision:** `0.7520`  
+- **Recall:** `0.4860`  
+- **F1 Score:** `0.5904`  
+- **ROC-AUC Score:** `0.8731`
 
-Compared their performance using 5-fold and 10-fold cross-validation strategies.
+## 📊 Model Comparison
 
-Carried out hyperparameter tuning using GridSearchCV, optimizing parameters such as:
+### Gradient Boosting Classifier
+- **Accuracy:** `0.8640`  
+- **Precision:** `0.7530`  
+- **Recall:** `0.4711`  
+- **F1 Score:** `0.5775`  
+- **ROC-AUC:** `0.8698`
 
-n_estimators
+### Random Forest Classifier
+- **Accuracy:** `0.8605`  
+- **Precision:** `0.7938`  
+- **Recall:** `0.3919`  
+- **F1 Score:** `0.5247`  
+- **ROC-AUC:** `0.8685`
 
-max_depth
-
-learning_rate (for boosting models)
-
-Best Model: LightGBMClassifier
-The Light Gradient Boosting Machine (LightGBMClassifier) outperformed all other models in terms of overall balance between precision and recall. The optimal model configuration after tuning was:
-
-learning_rate = 0.05
-
-max_depth = 5
-
-n_estimators = 100
-
-Evaluation Metrics on Test Set:
-
-Accuracy: 0.8675
-
-Precision: 0.7520
-
-Recall: 0.4860
-
-F1 Score: 0.5904
-
-ROC-AUC: 0.8731
-
-Confusion Matrix:
-
-lua
-Copy
-Edit
-[[1544   63]
- [ 203  192]]
-Comparison with Other Models:
-Gradient Boosting Classifier:
-
-Accuracy: 0.8640
-
-Precision: 0.7530
-
-Recall: 0.4711
-
-F1 Score: 0.5775
-
-ROC-AUC: 0.8698
-
-Random Forest Classifier:
-
-Accuracy: 0.8605
-
-Precision: 0.7938
-
-Recall: 0.3919
-
-F1 Score: 0.5247
-
-ROC-AUC: 0.8685
-
-Although models like Random Forest and Gradient Boosting showed competitive performance in terms of precision and ROC-AUC, LightGBM offered a better trade-off between precision, recall, and overall generalization.
-
-Future Scope:
-Further improvements may be possible by experimenting with ensemble techniques or advanced methods such as stacking and feature selection strategies to enhance recall while preserving precision.
